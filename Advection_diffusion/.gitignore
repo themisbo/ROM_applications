@@ -1,0 +1,6 @@
+*.pth
+*.h5
+*.npy
+GP_info.txt
+CAE_data
+.ipynb_checkpoints

@@ -8,15 +8,15 @@ Pre-requisites:
 2. `conda` python 3.7 environment created and activated using
 
    ```sh
-   conda create -n rules python=3.7
-   conda activate rules
+   conda create -n ROM python=3.7
+   conda activate ROM
    ```
 
 Install dependencies:
 
 ```shell
-git clone https://github.com/themisbo/Rule-based-Bayesian-regr.git
-cd rule-based-bayesian-regression
+git clone https://github.com/themisbo/ROM_applications.git
+cd ROM_applications
 pip install -r requirements.txt
 ```
 
