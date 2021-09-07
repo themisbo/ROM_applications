@@ -1,0 +1,9 @@
+Metrics for VAE recreation (AE + GP):
+GP MAE score: 2.1968907094560563e-06
+GP MSE score: 6.598672363907099e-05
+Metrics for VAE recreation (AE + DGP):
+DGP MAE score: 3.372669161763042e-06
+DGP MSE score: 7.476077880710363e-05
+Metrics for VAE recreation (AE + LSTM):
+LSTM MAE score: 1.3661776029039174e-05
+LSTM MSE score: 0.00015587458619847894
