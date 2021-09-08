@@ -12,7 +12,7 @@ Pre-requisites:
    conda activate ROM
    ```
 
-Install dependencies:
+Clone the repository and install dependencies:
 
 ```shell
 git clone https://github.com/themisbo/ROM_applications.git
