@@ -31,11 +31,9 @@ class CahnHilliardEquation(NonlinearProblem):
 
 
 def create_d(lmbda):
-    # lmbda = 1.0e-01  # surface parameter
     os.makedirs("lmbda" + str(lmbda))
-    # dt = 5.0e-06  # time step
-    dt = 1.0e-05  # time step
-    theta = 0.5  # time stepping family, e.g. theta=1 -> backward Euler, theta=0.5 -> Crank-Nicolson
+    dt = 1.0e-05
+    theta = 0.5
 
     parameters["form_compiler"]["optimize"] = True
     parameters["form_compiler"]["cpp_optimize"] = True
@@ -47,8 +45,8 @@ def create_d(lmbda):
     du = TrialFunction(ME)
     q, v = TestFunctions(ME)
 
-    u = Function(ME)  # current solution
-    u0 = Function(ME)  # solution from previous converged step
+    u = Function(ME)
+    u0 = Function(ME)
 
     dc, dmu = split(du)
     c, mu = split(u)
@@ -78,8 +76,6 @@ def create_d(lmbda):
 
     file = File("output.pvd", "compressed")
 
-    # mesh_coordinates = mesh.coordinates()
-
     ind = 0
     t = 0.0
     T = 50 * dt
@@ -87,16 +83,11 @@ def create_d(lmbda):
         t += dt
         u0.vector()[:] = u.vector()
         solver.solve(problem, u.vector())
-        # file << (u.split()[0], t)
-        # concentration = u.split("true")[0].vector().get_local()
         np.save(
             "lmbda" + str(lmbda) + "/numpy_t" + str(ind + 1),
             u.split()[0].vector().get_local(),
         )
-        # res_vec = np.stack(
-        #     (mesh_coordinates.T[0], mesh_coordinates.T[1], concentration)
-        # )
-        # v2d = vertex_to_dof_map(ME)
+
         ind += 1
         element = ME.element()
         dofmap = ME.dofmap()
@@ -115,7 +106,6 @@ def create_d(lmbda):
         np.save("lmbda" + str(lmbda) + "/numpy_order" + str(ind), all_order)
 
 
-# VALS = np.linspace(1.0e-02, 0.105, 20)
 VALS = np.linspace(1.0e-02, 0.0575, 20)
 
 for i in range(len(VALS)):
